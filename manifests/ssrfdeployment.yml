@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssrf
+spec:
+  selector:
+    matchLabels:
+      run: ssrf
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: ssrf
+    spec:
+      hostNetwork: true
+      containers:
+      - name: ssrf
+        image: raesene/ssrftester
+        ports:
+        - containerPort: 4567
+
+
